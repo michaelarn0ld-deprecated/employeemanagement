@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Employee Management -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('employees.index') }}">
                     <i class="fas fa-users"></i>
                     <span>Employee Management</span></a>
             </li>
@@ -71,10 +71,23 @@
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Countries</a>
-                        <a class="collapse-item" href="cards.html">States</a>
-                        <a class="collapse-item" href="cards.html">Cities</a>
-                        <a class="collapse-item" href="cards.html">Departments</a>
+                        <a  class="collapse-item" 
+                            href="{{ route('countries.index') }}">Countries
+                        </a>
+                        <a 
+                            class="collapse-item" 
+                            href={{ route('states.index') }}>States
+                        </a>
+                        <a 
+                        class="collapse-item" 
+                        href="cards.html">Cities
+
+                        </a>
+                        <a 
+                        class="collapse-item" 
+                        href="cards.html">Departments
+
+                        </a>
                     </div>
                 </div>
             </li>
@@ -88,7 +101,7 @@
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Users</a>
+                        <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
                         <a class="collapse-item" href="cards.html">Roles</a>
                         <a class="collapse-item" href="cards.html">Permissions</a>
                     </div>
@@ -120,18 +133,23 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    welcome 
+                                    Welcome 
                                     {{ Auth::user()->first_name }}
                                     {{ Auth::user()->last_name }}!
                                 </span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">                            
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
                                 </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>                            
                             </div>
                         </li>
 
@@ -144,12 +162,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
-                    <div class="row">
-                        @yield('content')
-                    </div>
+                    @yield('content')
 
                 </div>
                 <!-- /.container-fluid -->
