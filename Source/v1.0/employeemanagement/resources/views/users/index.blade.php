@@ -7,7 +7,7 @@
     </div>
 
     <div class="row">
-        <div class="card mx-auto">
+        <div class="card mx-auto" style="width: 60%">
             @if (session()->has('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
@@ -18,8 +18,8 @@
                     <div class="col">
                         <form action="{{ route('users.index') }}" method="GET">
                             <div class="form-row align-items-center">
-                                <div class="col">
-                                    <input type="text" name="search" class="form-control mb-2" id="inlineFormInput" placeholder="Enter Username">
+                                <div class="span6 input-large search-query" style="width: 70%">
+                                    <input type="text" name="search" class="form-control mb-2" id="inlineFormInput" placeholder="Enter Username or Email: ">
                                 </div>
                                 <div class="col">
                                     <button type="submit" class="btn btn-primary mb-2">Search</button>
