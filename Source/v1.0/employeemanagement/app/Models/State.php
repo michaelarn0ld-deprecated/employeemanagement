@@ -15,4 +15,8 @@ class State extends Model
         return $this->belongsTo(Country::class);
         //default foreign key is second argument "country_id"
     }
+
+    public function cities(){
+        return $this->hasMany(City::class);
+    }
 }
