@@ -17,10 +17,15 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $cities = City::all();
+
+        if ($request->has('search')){
+            $cities = City::where('name','like',"%{$request->search}%")
+                        ->get();
+        }
 
         return view('cities.index', [
             'cities' => $cities

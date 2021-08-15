@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Employee Management -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('employees.index') }}">
+                <a class="nav-link" href="/employees">
                     <i class="fas fa-users"></i>
                     <span>Employee Management</span></a>
             </li>
@@ -85,7 +85,7 @@
                         </a>
                         <a 
                         class="collapse-item" 
-                        href="cards.html">Departments
+                        href="{{ route('departments.index') }}">Departments
 
                         </a>
                     </div>
