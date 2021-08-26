@@ -23,7 +23,7 @@ class Employee extends Model
                             'date_hired'
                         ];
 
-public function city(){
+    public function city(){
         return $this->belongsTo(City::class);
     }
 
